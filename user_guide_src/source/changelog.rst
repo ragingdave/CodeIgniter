@@ -100,6 +100,8 @@ Release Date: Not Released
 
       - :php:func:`form_dropdown()` will now also take an array for unity with other form helpers.
       - :php:func:`form_prep()`'s second argument now only accepts a boolean value, which determines whether the value is escaped for a <textarea> or a regular <input> element.
+      - :php:func:`form_input_type()` added to allow use of most html5 input types.
+      - :php:func:`form_input_range()` added to allow the use of range input types
 
    -  :doc:`Security Helper <helpers/security_helper>` changes include:
 

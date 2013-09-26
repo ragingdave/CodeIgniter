@@ -195,6 +195,64 @@ if ( ! function_exists('form_input'))
 
 // ------------------------------------------------------------------------
 
+if ( ! function_exists('form_input_type'))
+{
+	/**
+	 * Form Input Type
+	 * 
+	 * Create an html5 input field.
+	 *
+	 * @param string $type The input type
+	 * @param mixed $data array of values
+	 * @param string $value The input value
+	 * @param string $extra Any extra attributes
+	 * @return string
+	 */
+	function form_input_type($type = '', $data = '', $value = '', $extra = '')
+	{
+		if ( ! is_array($data))
+		{
+			$data = array('name' => $data);
+		}
+
+		$data['type'] = (( ! empty($type)) ? $type : 'text');
+		return form_input($data, $value, $extra);
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('form_input_range'))
+{
+	/**
+	 * Form Input Range
+	 * 
+	 * Create a range input field.
+	 * 
+	 * @param mixed string $data
+	 * @param int $min range min value
+	 * @param int $max range max value
+	 * @param int $step range step value
+	 * @param string $value The input value
+	 * @param string $extra Any extra attributes
+	 */
+	function form_input_range($data = '', $min = 0, $max = 0, $step = 0, $value = '', $extra = '')
+	{
+		$defaults = array(
+			'type' => 'range',
+			'name' => (( ! is_array($data)) ? $data : ''),
+			'value' => $value,
+			'min' => $min,
+			'max' => $max,
+			'step' => $step
+		);
+
+		return "<input "._parse_form_attributes($data, $defaults).$extra." />";
+	}
+}
+
+// ------------------------------------------------------------------------
+
 if ( ! function_exists('form_password'))
 {
 	/**

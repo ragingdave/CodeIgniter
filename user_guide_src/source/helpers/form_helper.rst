@@ -200,13 +200,72 @@ JavaScript, you can pass it as a string in the third parameter::
 	$js = 'onClick="some_function()"';
 	echo form_input('username', 'johndoe', $js);
 
+form_input_type()
+=================
+
+.. php:function:: form_input_type($type = '', $data = '', $value = '', $extra = '')
+
+	:param  string  $type: The input type
+	:param  mixed   $data: 
+	:param  string  $value: The input value
+	:param  string  $extra: Any extra attributes
+	:returns:   string
+
+This function is used to create most types of html5 input fields. 
+You can minimally pass the field name and value in the first and 
+second parameter::
+
+	echo form_input_type('tel', 'phone');
+
+	/*
+		Would produce:
+
+		<input type="tel" name="phone" value="" />
+	*/
+
+It also has two additional params::
+
+	echo form_input_type('tel', 'phone', '8675309', 'id="phone"');
+
+	/*
+		Would produce:
+
+		<input type="tel" name="phone" value="8675309" id="phone" />
+	*/
+
+form_input_range()
+==================
+
+.. php:function:: form_input_range($data = '', $min = 0, $max = 0, $step = 0, $value = '', $extra = '')
+
+	:param  mixed   $data:  Field attributes data
+	:param  int     $min:   min range value
+	:param  int     $max:   max range value
+	:param  int     $step:  range step value
+	:param  string  $value: The input value
+	:param  string  $extra: Any extra attributes
+	:returns:   string
+	 
+This function is used to create an html5 range field::
+
+	echo form_input_range('year', '2005', '2011', '1');
+
+	/*
+		Would produce: 
+	
+		<input type="range" name="year" value="" min="2005" max="2011" step="1"  />
+	*/
+
+The optional fifth and sixth parameters are a default value and a 
+string of any extra attributes such as id, class, style.
+
 form_password()
 ===============
 
 .. php:function:: form_password($data = '', $value = '', $extra = '')
 
 	:param	array	$data: Field attributes data
-	:param	string	$value: Field value
+	:param 	string	$value: Field value
 	:param	string	$extra: Extra attributes to be added to the tag *as is*
 	:returns:	string
 
